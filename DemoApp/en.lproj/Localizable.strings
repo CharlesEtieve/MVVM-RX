@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  v-labs
+
+  Created by Charles Etieve on 07/03/2019.
+  Copyright © 2019 Charles Etieve. All rights reserved.
+*/
+
+"closeCommentButton" = "Close comments";
+"openCommentButton" = "Open comments";
+"posts" = "Posts";
+"error" = "Error";

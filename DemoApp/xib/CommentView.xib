@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CommentView" customModule="v_labs" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="126"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bo9-GL-CzK">
+                    <rect key="frame" x="10" y="10" width="307" height="106"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ4-YK-bDf">
+                            <rect key="frame" x="10" y="10" width="287" height="18.5"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="18.5" id="kDQ-gt-QAP"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPY-Xm-gG2">
+                            <rect key="frame" x="10" y="38.5" width="287" height="57.5"/>
+                            <string key="text">Cyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris.</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="SZ4-YK-bDf" firstAttribute="leading" secondItem="bo9-GL-CzK" secondAttribute="leading" constant="10" id="6sC-px-HN4"/>
+                        <constraint firstAttribute="trailing" secondItem="SZ4-YK-bDf" secondAttribute="trailing" constant="10" id="IMS-Sh-MeT"/>
+                        <constraint firstItem="JPY-Xm-gG2" firstAttribute="top" secondItem="SZ4-YK-bDf" secondAttribute="bottom" constant="10" id="ZrV-lL-OEc"/>
+                        <constraint firstAttribute="bottom" secondItem="JPY-Xm-gG2" secondAttribute="bottom" constant="10" id="d2t-bz-jeK"/>
+                        <constraint firstItem="JPY-Xm-gG2" firstAttribute="leading" secondItem="bo9-GL-CzK" secondAttribute="leading" constant="10" id="dOH-OB-uV2"/>
+                        <constraint firstItem="SZ4-YK-bDf" firstAttribute="top" secondItem="bo9-GL-CzK" secondAttribute="top" constant="10" id="rTA-z5-vNd"/>
+                        <constraint firstAttribute="trailing" secondItem="JPY-Xm-gG2" secondAttribute="trailing" constant="10" id="s9w-kx-mPh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bo9-GL-CzK" secondAttribute="trailing" constant="10" id="bjO-eZ-zFJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bo9-GL-CzK" secondAttribute="bottom" constant="10" id="cdO-Yh-zSl"/>
+                <constraint firstItem="bo9-GL-CzK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ieR-1t-BKu"/>
+                <constraint firstItem="bo9-GL-CzK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="zjM-k1-3Ts"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="background" destination="bo9-GL-CzK" id="Has-Dc-LDp"/>
+                <outlet property="body" destination="JPY-Xm-gG2" id="rab-J7-FhI"/>
+                <outlet property="email" destination="SZ4-YK-bDf" id="zVy-Gk-xp3"/>
+            </connections>
+            <point key="canvasLocation" x="85.599999999999994" y="-172.71364317841082"/>
+        </view>
+    </objects>
+</document>
