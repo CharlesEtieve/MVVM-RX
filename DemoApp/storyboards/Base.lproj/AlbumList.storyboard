@@ -71,6 +71,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="sX0-FA-866" firstAttribute="leading" secondItem="52j-Ph-181" secondAttribute="leading" constant="20" id="Ryj-hs-jMi"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sX0-FA-866" secondAttribute="trailing" constant="20" id="iV3-Du-fdm"/>
                                         <constraint firstItem="sX0-FA-866" firstAttribute="centerY" secondItem="52j-Ph-181" secondAttribute="centerY" id="laI-zM-eUM"/>
                                     </constraints>
                                     <connections>
