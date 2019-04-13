@@ -11,7 +11,7 @@ target 'DemoApp' do
   pod 'RxDataSources', '~> 3.0'
   pod 'Kingfisher', '~> 4.10.1'
   pod 'SVProgressHUD', '~> 2.2.5'
-
+  pod "InitialsImageView", '~> 0.5.0'
 end
 
 target 'DemoAppTests' do

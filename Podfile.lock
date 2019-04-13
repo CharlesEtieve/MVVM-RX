@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.8.1)
   - Differentiator (3.1.0)
+  - InitialsImageView (0.5.0)
   - Kingfisher (4.10.1)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
@@ -37,6 +38,7 @@ PODS:
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - InitialsImageView (~> 0.5.0)
   - Kingfisher (~> 4.10.1)
   - Moya-ObjectMapper/RxSwift (~> 2.8)
   - RxBlocking (~> 4.0)
@@ -50,6 +52,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Differentiator
+    - InitialsImageView
     - Kingfisher
     - Moya
     - Moya-ObjectMapper
@@ -66,6 +69,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
+  InitialsImageView: ab9ea8cbf9874231201ad097209ea9b46a61d8a7
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
   Moya-ObjectMapper: c514b5eafcfd5e260f85f7a5bf66895a217e2b37
@@ -79,6 +83,6 @@ SPEC CHECKSUMS:
   RxTest: 6433d5b6229f5de424fa534bc22b5e6c38b0b671
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 0b8b8580f225d5848f30fe65d0b8e816152560d2
+PODFILE CHECKSUM: edef7aa6b0a7f2d089ce2514c4811d1410a107eb
 
 COCOAPODS: 1.5.3

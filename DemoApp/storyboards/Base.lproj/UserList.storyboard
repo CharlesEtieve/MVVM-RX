@@ -13,7 +13,7 @@
         <!--User List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="UserListControllerID" id="BYZ-38-t0r" customClass="UserListViewController" customModule="v_labs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserListControllerID" id="BYZ-38-t0r" customClass="UserListViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="je8-6R-PoK" customClass="UserCell" customModule="v_labs" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="je8-6R-PoK" customClass="UserCell" customModule="DemoApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="je8-6R-PoK" id="Raz-3S-ebA">
@@ -30,21 +30,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charles Etieve" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ew9-CX-gCE">
-                                                    <rect key="frame" x="20" y="11.5" width="109" height="21"/>
+                                                    <rect key="frame" x="68" y="11.5" width="109" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y7Y-RB-wXX">
-                                                    <rect key="frame" x="331" y="9" width="24" height="26"/>
-                                                    <inset key="contentEdgeInsets" minX="5" minY="2" maxX="5" maxY="2"/>
-                                                    <state key="normal" image="email"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zv-yO-3DI">
-                                                    <rect key="frame" x="286" y="9" width="25" height="26"/>
-                                                    <inset key="contentEdgeInsets" minX="5" minY="2" maxX="4" maxY="2"/>
-                                                    <state key="normal" image="phone"/>
-                                                </button>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-d7-jKs">
                                                     <rect key="frame" x="0.0" y="43" width="375" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -52,23 +42,36 @@
                                                         <constraint firstAttribute="height" constant="1" id="pGJ-K3-Qk2"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectCell" translatesAutoresizingMaskIntoConstraints="NO" id="3ud-1r-p6T">
+                                                    <rect key="frame" x="335" y="14" width="20" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="16" id="P0R-Yq-rTA"/>
+                                                        <constraint firstAttribute="width" constant="20" id="b6M-zy-kxK"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rAZ-LV-hkA">
+                                                    <rect key="frame" x="21" y="7" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="GGf-rX-z26"/>
+                                                        <constraint firstAttribute="width" constant="30" id="eEV-pb-I1s"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ew9-CX-gCE" firstAttribute="leading" secondItem="Raz-3S-ebA" secondAttribute="leading" constant="20" id="18N-co-9iu"/>
-                                                <constraint firstItem="y7Y-RB-wXX" firstAttribute="centerY" secondItem="Raz-3S-ebA" secondAttribute="centerY" id="BGY-WX-64r"/>
-                                                <constraint firstAttribute="trailing" secondItem="y7Y-RB-wXX" secondAttribute="trailing" constant="20" id="C0s-PT-9jH"/>
-                                                <constraint firstItem="y7Y-RB-wXX" firstAttribute="leading" secondItem="0zv-yO-3DI" secondAttribute="trailing" constant="20" id="IhU-D9-W5r"/>
+                                                <constraint firstItem="rAZ-LV-hkA" firstAttribute="leading" secondItem="Raz-3S-ebA" secondAttribute="leading" constant="21" id="26M-Jr-E2K"/>
+                                                <constraint firstAttribute="trailing" secondItem="3ud-1r-p6T" secondAttribute="trailing" constant="20" id="CML-aO-ara"/>
+                                                <constraint firstItem="ew9-CX-gCE" firstAttribute="leading" secondItem="rAZ-LV-hkA" secondAttribute="trailing" constant="17" id="CO2-Z8-sYE"/>
+                                                <constraint firstItem="3ud-1r-p6T" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ew9-CX-gCE" secondAttribute="trailing" constant="20" id="JDZ-ma-h36"/>
                                                 <constraint firstItem="ew9-CX-gCE" firstAttribute="centerY" secondItem="Raz-3S-ebA" secondAttribute="centerY" id="JMj-my-o0Q"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ew9-CX-gCE" secondAttribute="trailing" constant="110" id="Wwr-gO-kH2"/>
-                                                <constraint firstItem="0zv-yO-3DI" firstAttribute="centerY" secondItem="Raz-3S-ebA" secondAttribute="centerY" id="X5N-Qd-xe4"/>
+                                                <constraint firstItem="rAZ-LV-hkA" firstAttribute="centerY" secondItem="Raz-3S-ebA" secondAttribute="centerY" id="Z5L-0H-fZw"/>
                                                 <constraint firstAttribute="trailing" secondItem="zUK-d7-jKs" secondAttribute="trailing" id="arf-Z0-gfo"/>
                                                 <constraint firstAttribute="bottom" secondItem="zUK-d7-jKs" secondAttribute="bottom" id="h1N-Mk-mt7"/>
                                                 <constraint firstItem="zUK-d7-jKs" firstAttribute="leading" secondItem="Raz-3S-ebA" secondAttribute="leading" id="jwv-ah-C2q"/>
+                                                <constraint firstItem="3ud-1r-p6T" firstAttribute="centerY" secondItem="Raz-3S-ebA" secondAttribute="centerY" id="sGX-PY-e5K"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="emailButton" destination="y7Y-RB-wXX" id="Kvu-ui-kNj"/>
-                                            <outlet property="phoneButton" destination="0zv-yO-3DI" id="qJa-8c-D8Z"/>
+                                            <outlet property="userImage" destination="rAZ-LV-hkA" id="OMx-6J-yeZ"/>
                                             <outlet property="userName" destination="ew9-CX-gCE" id="cI8-48-f6d"/>
                                         </connections>
                                     </tableViewCell>
@@ -103,7 +106,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="email" width="14" height="14"/>
-        <image name="phone" width="16" height="16"/>
+        <image name="selectCell" width="9" height="14"/>
     </resources>
 </document>
