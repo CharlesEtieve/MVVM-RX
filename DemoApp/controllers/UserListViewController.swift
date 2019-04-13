@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  v-labs
+//  DemoApp
 //
 //  Created by Charles Etieve on 01/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.
@@ -77,8 +77,8 @@ extension UserListViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let storyBoard = UIStoryboard(name: "UserFeed", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "UserFeedControllerID") as! UserFeedViewController
+        let storyBoard = UIStoryboard(name: "AlbumList", bundle: nil)
+        let viewController = storyBoard.instantiateViewController(withIdentifier: "AlbumListControllerID") as! AlbumListViewController
         viewController.user = viewModel.getUserAt(index: indexPath.row)
         navigationController?.pushViewController(viewController, animated: true)
     }

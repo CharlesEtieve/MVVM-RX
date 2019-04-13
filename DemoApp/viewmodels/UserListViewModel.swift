@@ -1,6 +1,6 @@
 //
 //  UsersViewModel.swift
-//  v-labs
+//  DemoApp
 //
 //  Created by Charles Etieve on 02/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.
@@ -62,4 +62,10 @@ class UserListViewModel {
         return userList[index]
     }
     
+}
+
+public class CustomError :  Error {
+    var code : Int?
+    var errors : [String]?
+    var message : String?
 }

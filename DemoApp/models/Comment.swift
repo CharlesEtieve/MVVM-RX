@@ -1,6 +1,6 @@
 //
 //  Comment.swift
-//  v-labs
+//  DemoApp
 //
 //  Created by Charles Etieve on 05/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  UserListViewModelTests.swift
-//  v-labsTests
+//  DemoAppTests
 //
 //  Created by Charles Etieve on 19/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.

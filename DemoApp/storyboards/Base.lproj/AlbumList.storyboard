@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Album List View Controller-->
+        <scene sceneID="f6b-Sf-0x4">
+            <objects>
+                <viewController storyboardIdentifier="AlbumListControllerID" id="DwK-g2-vt1" customClass="AlbumListViewController" customModule="DemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="t6l-DD-rrJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhG-85-J1a">
+                                <rect key="frame" x="20" y="53.5" width="100" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QuT-aE-5jM">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="a7n-T8-W1m">
+                                    <size key="itemSize" width="155" height="155"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="fua-Ja-Pm5" customClass="PhotoCell" customModule="DemoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpV-ov-rMG">
+                                                    <rect key="frame" x="15" y="15" width="70" height="70"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="qpV-ov-rMG" secondAttribute="bottom" constant="15" id="BQf-zg-BKU"/>
+                                            <constraint firstAttribute="trailing" secondItem="qpV-ov-rMG" secondAttribute="trailing" constant="15" id="LGy-hK-FVY"/>
+                                            <constraint firstItem="qpV-ov-rMG" firstAttribute="top" secondItem="fua-Ja-Pm5" secondAttribute="top" constant="15" id="ogn-sE-5YE"/>
+                                            <constraint firstItem="qpV-ov-rMG" firstAttribute="leading" secondItem="fua-Ja-Pm5" secondAttribute="leading" constant="15" id="t6f-yu-ts6"/>
+                                        </constraints>
+                                        <size key="customSize" width="100" height="100"/>
+                                        <connections>
+                                            <outlet property="image" destination="qpV-ov-rMG" id="H8U-AV-KVR"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Section" id="52j-Ph-181" customClass="UserFeedSectionView" customModule="DemoApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sX0-FA-866">
+                                            <rect key="frame" x="20" y="14.5" width="98.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sX0-FA-866" firstAttribute="leading" secondItem="52j-Ph-181" secondAttribute="leading" constant="20" id="Ryj-hs-jMi"/>
+                                        <constraint firstItem="sX0-FA-866" firstAttribute="centerY" secondItem="52j-Ph-181" secondAttribute="centerY" id="laI-zM-eUM"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="title" destination="sX0-FA-866" id="L3Y-9K-C0d"/>
+                                    </connections>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SOX-ja-pkl" firstAttribute="bottom" secondItem="QuT-aE-5jM" secondAttribute="bottom" id="0zb-kQ-EUf"/>
+                            <constraint firstItem="SOX-ja-pkl" firstAttribute="trailing" secondItem="QuT-aE-5jM" secondAttribute="trailing" id="bLb-Ph-Laj"/>
+                            <constraint firstItem="QuT-aE-5jM" firstAttribute="top" secondItem="ZhG-85-J1a" secondAttribute="bottom" constant="30" id="diX-4t-KAl"/>
+                            <constraint firstItem="QuT-aE-5jM" firstAttribute="leading" secondItem="SOX-ja-pkl" secondAttribute="leading" id="f9v-Ew-6oO"/>
+                            <constraint firstItem="QuT-aE-5jM" firstAttribute="top" secondItem="SOX-ja-pkl" secondAttribute="top" constant="90" id="kYh-0D-HKL"/>
+                            <constraint firstItem="ZhG-85-J1a" firstAttribute="leading" secondItem="SOX-ja-pkl" secondAttribute="leading" constant="20" id="xbZ-X9-3ID"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SOX-ja-pkl"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="QuT-aE-5jM" id="7CY-bO-oop"/>
+                        <outlet property="userTitle" destination="ZhG-85-J1a" id="DUP-B5-wdJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JfQ-fe-JDs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.399999999999999" y="144.3778110944528"/>
+        </scene>
+    </scenes>
+</document>

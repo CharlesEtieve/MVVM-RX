@@ -1,6 +1,6 @@
 //
 //  UserFeedViewModelTests.swift
-//  v-labsTests
+//  DemoAppTests
 //
 //  Created by Charles Etieve on 19/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.
@@ -11,13 +11,14 @@ import Moya
 import RxTest
 import RxSwift
 import RxBlocking
+import RxDataSources
 import RxCocoa
 
 @testable import DemoApp
 
 class UserFeedViewModelTests: XCTestCase {
     
-    var viewModel: UserFeedViewModel!
+    var viewModel: AlbumListViewModel!
     var testScheduler: TestScheduler!
     var bag: DisposeBag!
     let provider = MoyaProvider<MyService>(stubClosure: MoyaProvider.immediatelyStub)
@@ -33,7 +34,7 @@ class UserFeedViewModelTests: XCTestCase {
                 switch event {
                 case .success(let userList):
                     let firstUser = userList[0]
-                    self.viewModel = UserFeedViewModel(user: firstUser, provider: self.provider)
+                    self.viewModel = AlbumListViewModel(user: firstUser, provider: self.provider)
                 case .error(_):
                     break
                 }
@@ -68,68 +69,30 @@ class UserFeedViewModelTests: XCTestCase {
         XCTAssertEqual(getValueFrom(observer: loading, recordIndex: 2), false)
     }
 
-    func testOutputUserFeed() {
+    func testOutputAlbumList() {
         
         let reloadTime = 100
         
-        let tableView = testScheduler.createObserver([MultipleSectionModel].self)
-        viewModel.output.feed.drive(tableView).disposed(by: bag)
+        let collectionView = testScheduler.createObserver([SectionModel<String, Photo>].self)
+        viewModel.output.albums.drive(collectionView).disposed(by: bag)
         
         let refresh = testScheduler.createHotObservable([next(reloadTime, ())])
         refresh.bind(to: viewModel.input.refresh).disposed(by: bag)
         
         testScheduler.start()
         
-        XCTAssertEqual(getTimeFrom(observer: tableView, recordIndex: 0), 0)
-        if let sections = getValueFrom(observer: tableView, recordIndex: 0) {
-            XCTAssertEqual(sections.count, 11)
-            let postSection = sections[0]
-            let postItems = postSection.items
-            let postItem = postItems[0]
-            switch postItem {
-            case .PostSection(let post) :
-                XCTAssertEqual(post.id, 1)
-                XCTAssertEqual(post.userId, 1)
-                XCTAssertEqual(post.title, "sunt aut facere repellat provident occaecati excepturi optio reprehenderit")
-                XCTAssertEqual(post.body, "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
-            case .PhotoSection(_):
-                XCTFail()
-            }
-            let photoSection = sections[1]
-            let photoItems = photoSection.items
-            let photo = photoItems[0]
-            switch photo {
-            case .PostSection(_) :
-                XCTFail()
-            case .PhotoSection(let photo):
-                XCTAssertEqual(photo.url, "https://via.placeholder.com/600/92c952")
-            }
+        XCTAssertEqual(getTimeFrom(observer: collectionView, recordIndex: 0), 0)
+        if let sections = getValueFrom(observer: collectionView, recordIndex: 0) {
+            print(sections.count)
+            XCTAssertEqual(sections.count, 10)
+            XCTAssertEqual(sections[0].items[0].url, "https://via.placeholder.com/600/92c952")
         }
         
-        XCTAssertEqual(getTimeFrom(observer: tableView, recordIndex: 1), reloadTime)
-        if let sections = getValueFrom(observer: tableView, recordIndex: 1) {
-            XCTAssertEqual(sections.count, 11)
-            let postSection = sections[0]
-            let postItems = postSection.items
-            let postItem = postItems[0]
-            switch postItem {
-            case .PostSection(let post) :
-                XCTAssertEqual(post.id, 1)
-                XCTAssertEqual(post.userId, 1)
-                XCTAssertEqual(post.title, "sunt aut facere repellat provident occaecati excepturi optio reprehenderit")
-                XCTAssertEqual(post.body, "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto")
-            case .PhotoSection(_):
-                XCTFail()
-            }
-            let photoSection = sections[1]
-            let photoItems = photoSection.items
-            let photo = photoItems[0]
-            switch photo {
-            case .PostSection(_) :
-                XCTFail()
-            case .PhotoSection(let photo):
-                XCTAssertEqual(photo.url, "https://via.placeholder.com/600/92c952")
-            }
+        XCTAssertEqual(getTimeFrom(observer: collectionView, recordIndex: 1), reloadTime)
+        if let sections = getValueFrom(observer: collectionView, recordIndex: 1) {
+            print(sections.count)
+            XCTAssertEqual(sections.count, 10)
+            XCTAssertEqual(sections[0].items[0].url, "https://via.placeholder.com/600/92c952")
         }
     }
 

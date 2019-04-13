@@ -1,6 +1,6 @@
 //
 //  CommentCell.swift
-//  v-labs
+//  DemoApp
 //
 //  Created by Charles Etieve on 05/03/2019.
 //  Copyright © 2019 Charles Etieve. All rights reserved.
@@ -28,9 +28,5 @@ class CommentView : UIView {
             body.text = comment!.body
         }
     }
-    
-    static func calculateHeight(cellWidth: CGFloat, comment: Comment) -> CGFloat {
-        return comment.body!.height(withConstrainedWidth: cellWidth - 40, font: UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular))
-            + 68.5
-    }
+
 }
