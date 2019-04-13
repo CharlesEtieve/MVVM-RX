@@ -68,6 +68,8 @@
 /* Begin PBXFileReference section */
 		428619F765DE701608CBDCDD /* Pods_DemoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DemoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		525BCC3488B3E160312E36E3 /* libPods-DemoAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DemoAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		563D255D2261FC420080601F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = ../fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		563D255E2261FCAF0080601F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		56A37AF92260A8F600A07E4B /* DemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A37AFC2260A8F600A07E4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56A37B032260A8F800A07E4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,7 +92,6 @@
 		56A37B442260ACDE00A07E4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
 		56A37B462260ACDE00A07E4B /* CommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentView.xib; sourceTree = "<group>"; };
 		56A37B482260ACDE00A07E4B /* MyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyService.swift; sourceTree = "<group>"; };
-		56A37B4B2260ACDF00A07E4B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = Localizable.strings; sourceTree = "<group>"; };
 		56A37B4E2260ACDF00A07E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AlbumList.storyboard; sourceTree = "<group>"; };
 		56A37B502260ACDF00A07E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56A37B522260ACDF00A07E4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/UserList.storyboard; sourceTree = "<group>"; };
@@ -172,9 +173,7 @@
 		56A37AFB2260A8F600A07E4B /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				56A37B422260ACDE00A07E4B /* en.lproj */,
 				56A37B402260ACDE00A07E4B /* extensions */,
-				56A37B492260ACDF00A07E4B /* fr.lproj */,
 				56A37B592260ACDF00A07E4B /* models */,
 				56A37B472260ACDE00A07E4B /* rest */,
 				56A37B4C2260ACDF00A07E4B /* storyboards */,
@@ -185,6 +184,8 @@
 				56A37B452260ACDE00A07E4B /* xib */,
 				56A37B332260ACC400A07E4B /* controllers */,
 				56A37B2A2260ACB500A07E4B /* cells */,
+				56A37B4A2260ACDF00A07E4B /* Localizable.strings */,
+				56A37B432260ACDE00A07E4B /* Localizable.strings */,
 				56A37AFC2260A8F600A07E4B /* AppDelegate.swift */,
 				56A37B032260A8F800A07E4B /* Assets.xcassets */,
 				56A37B082260A8F800A07E4B /* Info.plist */,
@@ -248,14 +249,6 @@
 			path = extensions;
 			sourceTree = "<group>";
 		};
-		56A37B422260ACDE00A07E4B /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				56A37B432260ACDE00A07E4B /* Localizable.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
 		56A37B452260ACDE00A07E4B /* xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,14 +263,6 @@
 				56A37B482260ACDE00A07E4B /* MyService.swift */,
 			);
 			path = rest;
-			sourceTree = "<group>";
-		};
-		56A37B492260ACDF00A07E4B /* fr.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				56A37B4A2260ACDF00A07E4B /* Localizable.strings */,
-			);
-			path = fr.lproj;
 			sourceTree = "<group>";
 		};
 		56A37B4C2260ACDF00A07E4B /* storyboards */ = {
@@ -730,7 +715,8 @@
 		56A37B4A2260ACDF00A07E4B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				56A37B4B2260ACDF00A07E4B /* fr */,
+				563D255D2261FC420080601F /* fr */,
+				563D255E2261FCAF0080601F /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

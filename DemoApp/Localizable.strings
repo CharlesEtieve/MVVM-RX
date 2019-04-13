@@ -6,7 +6,5 @@
   Copyright © 2019 Charles Etieve. All rights reserved.
 */
 
-"closeCommentButton" = "Fermer les commentaires";
-"openCommentButton" = "Ouvrir les commentaires";
-"posts" = "Publications";
 "error" = "Erreur";
+"someoneAlbums"="Les albums de %@";

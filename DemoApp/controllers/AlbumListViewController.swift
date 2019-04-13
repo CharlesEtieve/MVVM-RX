@@ -18,6 +18,7 @@ class AlbumListViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var userTitle: UILabel!
+    
     private let refreshControl = UIRefreshControl()
     
     var user: User!
@@ -28,8 +29,7 @@ class AlbumListViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = AlbumListViewModel(user: user, provider: provider)
-        userTitle.text = user.username
-        
+        userTitle.text = String(format: "someoneAlbums".localized(), user!.username!)
         collectionView.delegate = self
         
         if #available(iOS 10.0, *) {
@@ -47,7 +47,8 @@ class AlbumListViewController : UIViewController {
         let dataSource = RxCollectionViewSectionedReloadDataSource<SectionModel<String, Photo>>(
             configureCell: { dataSource, collectionView, indexPath, item in
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-                cell.image.kf.setImage(with: URL(string: item.thumbnailUrl!)!, options: [.transition(.fade(0.1))])
+                let placeHolder = UIImage(named: "placeholderPhoto")
+                cell.image.kf.setImage(with: URL(string: item.thumbnailUrl!)!, placeholder: placeHolder, options: [.transition(.fade(0.1))])
                 return cell
         }, configureSupplementaryView: { dataSource, collectionView, kind, indexPath in
             let model = dataSource.sectionModels[indexPath.section]

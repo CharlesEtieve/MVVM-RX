@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  DemoApp
+
+  Created by Charles Etieve on 07/03/2019.
+  Copyright © 2019 Charles Etieve. All rights reserved.
+*/
+
+"error" = "Erreur";
+"someoneAlbums"="Les albums de %@";
