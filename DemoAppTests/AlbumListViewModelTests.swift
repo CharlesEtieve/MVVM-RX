@@ -16,7 +16,7 @@ import RxCocoa
 
 @testable import DemoApp
 
-class UserFeedViewModelTests: XCTestCase {
+class AlbumListViewModelTests: XCTestCase {
     
     var viewModel: AlbumListViewModel!
     var testScheduler: TestScheduler!
@@ -34,7 +34,7 @@ class UserFeedViewModelTests: XCTestCase {
                 switch event {
                 case .success(let userList):
                     let firstUser = userList[0]
-                    self.viewModel = AlbumListViewModel(user: firstUser, provider: self.provider)
+                    self.viewModel = AlbumListViewModel(user: firstUser, provider: self.provider, navigationController: nil)
                 case .error(_):
                     break
                 }

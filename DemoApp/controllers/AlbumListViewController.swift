@@ -28,7 +28,7 @@ class AlbumListViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = AlbumListViewModel(user: user, provider: provider, navigationController: self.navigationController!)
+        viewModel = AlbumListViewModel(user: user, provider: provider, navigationController: self.navigationController)
         userTitle.text = String(format: "someoneAlbums".localized(), user!.username!)
         collectionView.delegate = self
         
@@ -63,6 +63,10 @@ class AlbumListViewController : UIViewController {
             .disposed(by: bag)
         
         viewModel.output.loading.drive(self.refreshControl.rx.isRefreshing).disposed(by: bag)
+        
+        viewModel.output.error.drive(onNext: { error in
+            self.displayAlert(error)
+        }).disposed(by: bag)
         
         //viewmodel input
         refreshControl.rx.controlEvent(UIControlEvents.valueChanged).bind(to: viewModel.input.refresh).disposed(by: bag)

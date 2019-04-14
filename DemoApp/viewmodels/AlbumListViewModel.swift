@@ -37,9 +37,9 @@ class AlbumListViewModel {
     private let bag = DisposeBag()
     private let provider: MoyaProvider<MyService>
     private var user: User
-    private var navigationController: UINavigationController
+    private var navigationController: UINavigationController?
     
-    init(user: User, provider: MoyaProvider<MyService>, navigationController: UINavigationController) {
+    init(user: User, provider: MoyaProvider<MyService>, navigationController: UINavigationController?) {
         self.user = user
         self.provider = provider
         self.navigationController = navigationController
@@ -49,10 +49,9 @@ class AlbumListViewModel {
         input = Input(refresh: refresh.asObserver(),
                       itemSelected: itemSelected.asObserver())
         
-        let userId = String(user.id!)
-        
-        refresh.asObservable()
-            .flatMap { provider.rx.request(.readAlbumForUser(userId: userId)).trackActivity(self.loading) }
+        refresh
+            .asObservable()
+            .flatMap { provider.rx.request(.readAlbumForUser(userId: String(user.id!))).trackActivity(self.loading) }
             .mapArray(Album.self)
             .flatMap ({ albums -> Observable<[(String, [Photo])]> in
                 var albumsRequest = [Observable<(String, [Photo])>]()
@@ -69,18 +68,19 @@ class AlbumListViewModel {
                 }
                 return Observable.combineLatest(albumsRequest) { $0 }
             })
-            .subscribe { event in
-                if let albums = event.element {
-                    var array = [SectionModel<String, Photo>]()
-                    for album in albums {
-                        array.append(SectionModel<String, Photo>(model: album.0, items: album.1))
-                    }
-                    self.albums.asObserver().onNext(array)
+            .catchError { error -> Observable<[(String, [Photo])]> in
+                self.error.asObserver().onNext(error)
+                return Observable.just([(String, [Photo])]())
+            }
+            .map { albums in
+                var array = [SectionModel<String, Photo>]()
+                for album in albums {
+                    array.append(SectionModel<String, Photo>(model: album.0, items: album.1))
                 }
-                if let error = event.error {
-                    self.error.asObserver().onNext(error)
-                }
-            }.disposed(by: bag)
+                return array
+            }
+            .bind(to: self.albums.asObserver())
+            .disposed(by: bag)
         
         refresh.asObserver().onNext(())
         
@@ -90,7 +90,7 @@ class AlbumListViewModel {
                     let storyBoard = UIStoryboard(name: "Photo", bundle: nil)
                     let viewController = storyBoard.instantiateViewController(withIdentifier: "photoControllerID") as! PhotoViewController
                     viewController.photo = photo
-                    self.navigationController.pushViewController(viewController, animated: true)
+                    self.navigationController?.pushViewController(viewController, animated: true)
                 }
             }
         }.disposed(by: bag)

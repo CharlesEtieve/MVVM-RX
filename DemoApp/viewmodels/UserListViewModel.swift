@@ -24,42 +24,58 @@ class UserListViewModel {
     
     struct Input {
         var refresh: AnyObserver<Void>
+        var itemSelected: AnyObserver<IndexPath>
     }
     
     private var users = BehaviorSubject<[User]>(value: [User]())
     private var loading = ActivityIndicator()
     private var error = PublishSubject<Error>()
     private var refresh = PublishSubject<Void>()
+    private var itemSelected = PublishSubject<IndexPath>()
     
-    private var userList = [User]()
     private let bag = DisposeBag()
     private var provider: MoyaProvider<MyService>
+    private var navigationController: UINavigationController?
     
-    init(provider: MoyaProvider<MyService>) {
+    init(provider: MoyaProvider<MyService>, navigationController: UINavigationController?) {
         self.provider = provider
+        self.navigationController = navigationController
         output = Output(users: users.asDriver(onErrorJustReturn: [User]()),
                         loading: loading.asDriver(onErrorJustReturn: false),
                         error : error.asDriver(onErrorJustReturn: CustomError.init()))
-        input = Input(refresh: refresh.asObserver())
+        input = Input(refresh: refresh.asObserver(),
+                      itemSelected: itemSelected.asObserver())
         
         refresh.asObservable()
             .flatMap { provider.rx.request(.readUsers).trackActivity(self.loading) }
             .mapArray(User.self)
-            .subscribe { event in
-                if let userList = event.element {
-                    self.userList = userList
-                    self.users.asObserver().onNext(userList)
+            .catchError { error -> Observable<[User]> in
+                self.error.asObserver().onNext(error)
+                return Observable.just([User]())
+            }
+            .bind(to: self.users.asObserver())
+            .disposed(by: bag)
+            
+        itemSelected.asObservable().subscribe { event in
+            if let indexPath = event.element {
+                if let user = self.getUser(at: indexPath) {
+                    let storyBoard = UIStoryboard(name: "AlbumList", bundle: nil)
+                    let viewController = storyBoard.instantiateViewController(withIdentifier: "AlbumListControllerID") as! AlbumListViewController
+                    viewController.user = user
+                    navigationController?.pushViewController(viewController, animated: true)
                 }
-                if let error = event.error {
-                    self.error.asObserver().onNext(error)
-                }
+            }
             }.disposed(by: bag)
         
         refresh.asObserver().onNext(())
     }
     
-    func getUserAt(index: Int) -> User {
-        return userList[index]
+    private func getUser(at indexPath: IndexPath) -> User? {
+        do {
+            return try users.value()[indexPath.row]
+        } catch {
+            return nil
+        }
     }
     
 }

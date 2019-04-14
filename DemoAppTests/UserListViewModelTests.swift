@@ -25,7 +25,7 @@ class UserListViewModelTests: XCTestCase {
     override func setUp() {
         // called before the invocation of each test
         super.setUp()
-        viewModel = UserListViewModel(provider: provider)
+        viewModel = UserListViewModel(provider: provider, navigationController: nil)
         testScheduler = TestScheduler(initialClock: 0)
         bag = DisposeBag()
     }

@@ -26,7 +26,7 @@ class UserListViewController: UIViewController {
         super.viewDidLoad()
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        viewModel = UserListViewModel(provider: appDelegate.provider)
+        viewModel = UserListViewModel(provider: appDelegate.provider, navigationController: self.navigationController)
         
         if #available(iOS 10.0, *) {
             tableview.refreshControl = refreshControl
@@ -52,6 +52,7 @@ class UserListViewController: UIViewController {
         
         //viewmodel input
         refreshControl.rx.controlEvent(UIControlEvents.valueChanged).bind(to: viewModel.input.refresh).disposed(by: bag)
+        tableview.rx.itemSelected.bind(to: viewModel.input.itemSelected).disposed(by: bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,14 +74,6 @@ extension UserListViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let storyBoard = UIStoryboard(name: "AlbumList", bundle: nil)
-        let viewController = storyBoard.instantiateViewController(withIdentifier: "AlbumListControllerID") as! AlbumListViewController
-        viewController.user = viewModel.getUserAt(index: indexPath.row)
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }
