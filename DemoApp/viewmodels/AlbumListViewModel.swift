@@ -54,7 +54,7 @@ class AlbumListViewModel {
         refresh.asObservable()
             .flatMap { provider.rx.request(.readAlbumForUser(userId: userId)).trackActivity(self.loading) }
             .mapArray(Album.self)
-            .flatMap ({ albuDemoApp.xcodeproj/project.pbxprojms -> Observable<[(String, [Photo])]> in
+            .flatMap ({ albums -> Observable<[(String, [Photo])]> in
                 var albumsRequest = [Observable<(String, [Photo])>]()
                 for album in albums {
                     if let albumId = album.id, let albumTitle = album.title {
