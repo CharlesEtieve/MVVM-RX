@@ -47,10 +47,10 @@ class UserListViewModel {
                       itemSelected: itemSelected.asObserver())
         
         refresh.asObservable()
-            .flatMap { provider.rx.request(.readUsers).trackActivity(self.loading) }
+            .flatMapLatest { provider.rx.request(.readUsers).trackActivity(self.loading) }
             .mapArray(User.self)
-            .catchError { error -> Observable<[User]> in
-                self.error.asObserver().onNext(error)
+            .catchError {
+                self.error.asObserver().onNext($0)
                 return Observable.just([User]())
             }
             .bind(to: self.users.asObserver())

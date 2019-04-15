@@ -51,9 +51,9 @@ class AlbumListViewModel {
         
         refresh
             .asObservable()
-            .flatMap { provider.rx.request(.readAlbumForUser(userId: String(user.id!))).trackActivity(self.loading) }
+            .flatMapLatest { provider.rx.request(.readAlbumForUser(userId: String(user.id!))).trackActivity(self.loading) }
             .mapArray(Album.self)
-            .flatMap ({ albums -> Observable<[(String, [Photo])]> in
+            .flatMapLatest ({ albums -> Observable<[(String, [Photo])]> in
                 var albumsRequest = [Observable<(String, [Photo])>]()
                 for album in albums {
                     if let albumId = album.id, let albumTitle = album.title {
@@ -68,8 +68,8 @@ class AlbumListViewModel {
                 }
                 return Observable.combineLatest(albumsRequest) { $0 }
             })
-            .catchError { error -> Observable<[(String, [Photo])]> in
-                self.error.asObserver().onNext(error)
+            .catchError {
+                self.error.asObserver().onNext($0)
                 return Observable.just([(String, [Photo])]())
             }
             .map { albums in

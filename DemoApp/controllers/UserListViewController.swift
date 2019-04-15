@@ -77,4 +77,3 @@ extension UserListViewController : UITableViewDelegate {
     }
     
 }
-
